@@ -4,7 +4,7 @@ from io import BytesIO
 
 buffer = BytesIO()
 c = pycurl.Curl()
-c.setopt(c.URL, 'https://github.com/brave/browser-laptop/issues?q=is%3Aissue+label%3Arelease-notes%2Finclude+is%3Aclosed+milestone%3A0.13.2')
+c.setopt(c.URL, 'https://github.com/brave/browser-laptop/issues?q=is%3Aissue+label%3Arelease-notes%2Finclude+is%3Aclosed+milestone%3A0.13.5')
 c.setopt(c.WRITEDATA, buffer)
 c.perform()
 c.close()
