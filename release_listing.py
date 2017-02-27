@@ -7,7 +7,7 @@ import re
 buffer = BytesIO()
 c = pycurl.Curl()
 c.setopt(c.URL, 'https://api.github.com/repos/brave/browser-laptop/releases')
-c.setopt(pycurl.USERPWD, 'alexwykoff:db6ebe8f8da28396a838f1aa43a6f6c507d4c360')
+c.setopt(pycurl.USERPWD, 'alexwykoff:')
 c.setopt(c.WRITEDATA, buffer)
 c.perform()
 c.close()
