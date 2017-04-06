@@ -16,6 +16,10 @@ print(key)
 checklist = []
 release_notes = []
 exclusion_list = []
+mac_checklist = []
+win32_checklist = []
+win64_checklist = []
+linux_checklist = []
 
 for issue in repo.get_issues(milestone=milestone_dictionary[key], state="all"):
   if('pull' not in issue.html_url):
@@ -38,6 +42,18 @@ for issue in repo.get_issues(milestone=milestone_dictionary[key], state="all"):
       output_line = ' - [ ] ' + issue_title + '. ([#' + str(issue.number) + '](' + issue.html_url + '))'
       checklist.append(output_line)
       checklist.append(issue.html_url)
+      if('QA/checked-macOS' not in label_names):
+        mac_checklist.append(output_line)
+
+      if('QA/checked-Win64' not in label_names):
+        win64_checklist.append(output_line)
+
+      if('QA/checked-Win32' not in label_names):
+        win32_checklist.append(output_line)
+
+      if('QA/checked-Ubuntu' not in label_names):
+        linux_checklist.append(output_line)
+
     else:
       output_line = ' - [ ] ' + issue_title + '. ([#' + str(issue.number) + '](' + issue.html_url + '))'
       exclusion_list.append(output_line)
@@ -57,7 +73,29 @@ print("")
 print("Exclusion List:")
 for line in exclusion_list:
   print(line)
+print("")
 
+print("Mac Checklist:")
+for line in mac_checklist:
+  print(line)
+print("")
+
+print("Win32 Checklist:")
+for line in win32_checklist:
+  print(line)
+print("")
+
+print("Win64 Checklist:")
+for line in win64_checklist:
+  print(line)
+print("")
+
+print("Linux Checklist:")
+for line in linux_checklist:
+  print(line)
+print("")
+
+'''
 myrepo = g.get_user().get_repo("whatever")
 title = "release notes for " + key
 
@@ -79,3 +117,4 @@ print("")
 print("type of thismilestone")
 print(type(thismilestone))
 myrepo.create_issue(title, body, assignee, thismilestone, mylabels)
+'''
